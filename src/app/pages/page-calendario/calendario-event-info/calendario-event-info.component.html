@@ -1,0 +1,32 @@
+<app-form-modal [titulo]="tituloModal">
+  <div class="row d-flex justify-content-between align-items-center p-3">
+    <div>
+      <p>
+        <span>Titulo da reserva</span>: {{ calendario.title }}
+      </p>
+      <p>
+        <span>Data inicial da reserva</span>:{{ calendario.start }}
+      </p>
+      <p>
+        <span>Instrutor responsável</span>: {{ calendario.instrutor }}
+      </p>
+      <p *ngIf="calendario.turma">
+        <span>Turma</span>: {{ calendario.turma }}
+      </p>
+      <p>
+        <span>Local</span>: {{ calendario.local }}
+      </p>
+      <p *ngIf="calendario.disciplina">
+        <span>Disciplina</span> {{ calendario.disciplina }}
+      </p>
+      <p *ngIf="calendario.descricao">
+        <span>Descrição da reserva</span>: {{ calendario.descricao }}
+      </p>
+    </div>
+  </div>
+</app-form-modal>
+<div class="modal-footer">
+  <button type="button" class="btnForm" id="voltar" data-bs-dismiss="modal">
+    Voltar
+  </button>
+</div>

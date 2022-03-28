@@ -1,0 +1,42 @@
+<!-- Draggable  -->
+<div id="wrap" class="d-flex mt-3">
+  <div class="d-flex flex-column" id="disciplinas">
+    <div class="d-flex align-items-center">
+      <h5>Turmas</h5>
+      <i class='bx bx-info-circle' tooltip="Arraste a turma para o calendário para realizar uma reserva"></i>
+    </div>
+
+    <app-drag-calendario
+      [turmas]="turmas"
+      [pilar]="'EAD/TI'"
+    ></app-drag-calendario>
+
+    <app-drag-calendario
+      [turmas]="turmas"
+      [pilar]="'Operacional'"
+    ></app-drag-calendario>
+
+    <app-drag-calendario
+      [turmas]="turmas"
+      [pilar]="'Call Center'"
+    ></app-drag-calendario>
+
+    <app-drag-calendario
+      [turmas]="turmas"
+      [pilar]="'Liderança'"
+    ></app-drag-calendario>
+
+  </div>
+
+  <!-- FullCalendar -->
+  <div id="calendar-wrap">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+</div>
+
+<ng-template #eventInfo>
+  <app-calendario-event-info
+    [calendario]="calendario"
+    tituloModal="Informações da Reserva"
+  ></app-calendario-event-info>
+</ng-template>

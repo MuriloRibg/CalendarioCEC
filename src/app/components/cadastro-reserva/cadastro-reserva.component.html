@@ -1,0 +1,208 @@
+<lib-toastify-toast-container
+    [hideProgressBar]="hideProgressBar"
+    [iconLibrary]="'font-awesome'"
+></lib-toastify-toast-container>
+
+<app-form-modal [titulo]="tituloModal">
+    <form
+      [formGroup]="formReserva"
+      id="formDisciplina"
+      (submit)="enviar()"
+      class="p-3"
+    >
+      <div class="row d-flex justify-content-between pb-2">
+        <div class="form-group col-sm">
+          <label for="titulo_evento">Titulo do Reserva</label>
+          <input
+            type="text"
+            name="titulo_evento"
+            class="form-control"
+            id="titulo_evento"
+            placeholder="Digite aqui..."
+            formControlName="titulo"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row pb-2" *ngIf="!reserva">
+        <div class="d-flex col-sm">
+          <div class="label-icon">
+            <label for="tipoReserva">Sua reserva é um?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="eventoRadio">Evento</label>
+            <input
+              (click)="modalEvento()"
+              formControlName="tipoEvento"
+              class="form-check-input"
+              type="radio"
+              id="eventoRadio"
+              value="Evento"
+            />
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="aulaRadio">Aula</label>
+            <input
+              (click)="modalAula()"
+              formControlName="tipoEvento"
+              class="form-check-input"
+              type="radio"
+              id="aulaRadio"
+              value="Aula"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+          class="row pb-2"
+          *ngIf="formReserva.get('tipoEvento')?.value == 'Aula'"
+        >
+          <div class="col-sm">
+            <div class="label-icon">
+              <label for="id_turma">Turma</label>
+            </div>
+            <select
+              (change)="pegaPorPilar(this.formReserva.get('id_turma')?.value)"
+              formControlName="id_turma"
+              name="id_turma"
+              id="id_turma"
+              class="form-control"
+              required
+            >
+              <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+              <option *ngFor="let turmaOption of turmas" value="{{turmaOption.id}}">{{turmaOption.nome}}</option>
+            </select>
+          </div>
+
+          <div class="col-sm">
+            <div class="label-icon">
+              <label for="id_disciplina">Disciplina</label>
+            </div>
+            <select
+              #selectDisciplinas
+              formControlName="id_disciplina"
+              name="id_disciplina"
+              class="form-control"
+              id="id_disciplinas"
+              required
+            >
+              <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+              <option *ngFor="let disciplinaOption of disciplinas" value="{{disciplinaOption.id}}">{{disciplinaOption.nome}}</option>
+            </select>
+          </div>
+        </div>
+
+      <div class="row pt-2 pb-2">
+        <div class="col-sm">
+          <label for="id_instrutor">Instrutor</label>
+          <select
+            #selectInstrutores
+            formControlName="id_instrutor"
+            name="id_instrutor"
+            class="form-control"
+            id="id_instrutor"
+          >
+            <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+            <option *ngFor="let instrutorOption of instrutores" value="{{instrutorOption.id}}">{{instrutorOption.nome}}
+            </option>
+          </select>
+        </div>
+        <div class="col-sm">
+          <label for="id_local">Local</label>
+          <select
+            #selectLocal
+            formControlName="id_local"
+            name="id_local"
+            class="form-control"
+            id="id_local"
+          >
+            <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+            <option *ngFor="let localOption of locais" value="{{localOption.id}}">{{localOption.nome}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row pt-2 pb-2">
+        <div class="col-sm">
+          <div class="label-icon">
+            <label for="data_inicio">Data de início</label>
+          </div>
+          <input
+            formControlName="dataInicio"
+            type="date"
+            name="data_inicio"
+            class="form-control"
+            id="data_inicio"
+            required
+          />
+        </div>
+        <div class="col-sm">
+          <div class="label-icon">
+            <label for="data_fim">Data de fim</label>
+          </div>
+          <input
+            formControlName="dataFim"
+            type="date"
+            name="data_fim"
+            class="form-control"
+            id="data_fim"
+          />
+        </div>
+      </div>
+
+      <div class="row pb-2">
+        <div class="col-sm">
+          <div class="label-icon">
+            <label for="hora_inicio">Hora de início</label>
+          </div>
+          <input
+            formControlName="horaInicio"
+            type="time"
+            id="hora_inicio"
+            class="form-control"
+            name="hora_inicio"
+            required
+          />
+        </div>
+
+        <div class="col-sm">
+          <div class="label-icon">
+            <label for="hora_fim">Hora de fim</label>
+          </div>
+          <input
+            formControlName="horaFim"
+            type="time"
+            id="hora_fim"
+            class="form-control"
+            name="hora_fim"
+            required
+          />
+        </div>
+        <div class="form-group pt-2">
+          <label for="desc_evento">Descrição da reserva</label>
+          <textarea
+            formControlName="descricao"
+            class="form-control"
+            id="desc_evento"
+            name="desc_evento"
+            placeholder="Digite detalhes da reunião..."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          id="salvar"
+          [disabled]="formReserva.invalid"
+        >
+          Salvar
+        </button>
+        <button type="button" class="btnForm" id="voltar" data-bs-dismiss="modal" (click)="onClose($event)">
+          Voltar
+        </button>
+      </div>
+    </form>
+  </app-form-modal>

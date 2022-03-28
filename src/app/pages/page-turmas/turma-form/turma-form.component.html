@@ -1,0 +1,98 @@
+<lib-toastify-toast-container
+  [hideProgressBar]="hideProgressBar"
+  [iconLibrary]="'font-awesome'"
+>
+</lib-toastify-toast-container>
+
+<app-form-modal [titulo]="tituloModal">
+  <form [formGroup]="formTurma" id="formlTurma" (submit)="enviar()" class="p-3">
+    <div id="espacamento" class="row d-flex justify-content-between">
+      <div class="form-group col-sm">
+        <label for="turma">Turma</label>
+        <input
+          type="text"
+          formControlName="nome"
+          class="form-control"
+          id="nomeTurma"
+          placeholder="Nome Turma"
+          required
+        />
+        <small
+          *ngIf="formTurma.get('nome')?.valid"
+          class="text-success d-block mt-2"
+        >
+          Nome da turma disponível!
+        </small>
+        <small
+          *ngIf="formTurma.get('nome')?.errors?.['nomeEmUso']"
+          class="text-danger d-block mt-2"
+        >
+          Nome da turma já cadastrada!
+        </small>
+      </div>
+
+      <div class="form-group d-flex flex-column col-sm">
+        <label for="quantidade">Quantidade</label>
+        <input
+          type="text"
+          formControlName="quant_alunos"
+          class="form-control"
+          id="quantidade"
+          placeholder="Quantidade"
+          required
+        />
+      </div>
+    </div>
+
+    <div id="espacamento" class="row d-flex justify-content-between">
+      <div class="form-group d-flex flex-column col-sm mt-2">
+        <div class="label-icon">
+          <label for="pilares">Pilares</label>
+        </div>
+        <select
+          (change)="pegaPorPilar(this.formTurma.get('pilar')?.value)"
+          formControlName="pilar"
+          class="form-control"
+          id="pilares"
+        >
+          <option [ngValue]="null" [disabled]="true">Selecione...</option>
+          <option
+            *ngFor="let pilar of pilares$ | async as pilares"
+            value="{{ pilar }}">{{ pilar }}
+          </option>
+        </select>
+      </div>
+
+      <div class="row form-group d-flex flex-column col-sm mt-2">
+        <div class="label-icon">
+          <label for="pilar">Categoria</label>
+        </div>
+        <select
+          #selectId_pilar
+          formControlName="id_pilar"
+          class="form-control"
+          id="id_pilar"
+        >
+          <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+          <option
+            *ngFor="let categoria of categorias"
+            value="{{ categoria.id }}">{{ categoria.categoria }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        class="btn btn-primary"
+        id="salvar"
+        [disabled]="formTurma.invalid"
+      >
+        Salvar
+      </button>
+      <button type="button" class="btnForm" id="voltar" data-bs-dismiss="modal">
+        Voltar
+      </button>
+    </div>
+  </form>
+</app-form-modal>

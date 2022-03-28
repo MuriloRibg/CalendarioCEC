@@ -1,0 +1,41 @@
+<lib-toastify-toast-container
+    [hideProgressBar]="hideProgressBar"
+    [iconLibrary]="'font-awesome'"
+></lib-toastify-toast-container>
+
+<app-form-modal [titulo]="tituloModal">
+  <form [formGroup]="formDisciplina" id="formDisciplina" (submit)="enviar()" class="p-3">
+    <div id="espacamento" class="row d-flex justify-content-between">
+
+        <div class="form-group col-sm">
+            <label for="local">Disciplina</label>
+            <input type="text" formControlName="nome" class="form-control" id="nomeDisciplina" placeholder="Nome Disciplina" required>
+
+            <small
+              *ngIf="formDisciplina.get('nome')?.valid"
+              class="text-success"
+            >Nome da disciplina é valido!</small>
+
+            <small
+              *ngIf="formDisciplina.get('nome')?.errors?.['nomeEmUso']"
+              class="text-danger d-block mt-2"
+            >Nome da disciplina já cadastrada!</small>
+
+        </div>
+
+        <div class="form-group d-flex flex-column col-sm">
+            <label for="capacidade">Pilar</label>
+            <select class="form-control" formControlName="pilar" placeholder="Pilar da Disciplina">
+              <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+              <option *ngFor="let pilar of pilares$ | async" [value]="pilar">{{pilar}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button
+        class="btn btn-primary" id="salvar" [disabled]="formDisciplina.invalid"> Salvar </button>
+        <button type="button" class="btnForm" id="voltar" data-bs-dismiss="modal">Voltar</button>
+    </div>
+  </form>
+</app-form-modal>

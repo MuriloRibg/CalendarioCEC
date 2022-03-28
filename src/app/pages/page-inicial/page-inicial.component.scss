@@ -1,0 +1,61 @@
+/*--- Google Fonts ---*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container-fluid {
+  height: calc(100vh - 103px);
+  display: flex;
+  flex-direction: column;
+}
+
+#adicionarEvento{
+  width: 144px;
+  height: 40px;
+
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+  background: #183884;
+}
+
+#adicionarEvento {
+  text-decoration: none;
+}
+
+#adicionarEvento img  {
+  margin-left: 8px;
+}
+
+#adicionarEvento:hover {
+  opacity: 0.8;
+}
+
+#tituloPagina {
+  .bx-info-circle {
+    margin-left: 5px;
+  }
+}
+
+#pagination-controls {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.componentSelectTurma{
+  width: 180px;
+  margin-right: 15px;
+}
+
+.selectTurma{
+  position: relative;
+
+  .bx-chevron-down{
+    top: 13px;
+    right: 2px;
+    position: absolute;
+  }
+}

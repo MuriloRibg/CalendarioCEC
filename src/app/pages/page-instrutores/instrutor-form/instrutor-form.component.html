@@ -1,0 +1,73 @@
+<lib-toastify-toast-container
+    [hideProgressBar]="hideProgressBar"
+    [iconLibrary]="'font-awesome'"
+></lib-toastify-toast-container>
+
+<app-form-modal [titulo]="tituloModal">
+    <form [formGroup]="formInstrutor" id="formInstrutor" (submit)="enviar()" class="p-3">
+        <div id="espacamento" class="row d-flex justify-content-between">
+            <div class="form-group col-sm">
+                <label for="instrutor">Instrutor</label>
+                <input type="text" formControlName="nome" class="form-control" id="nomeInstrutor" placeholder="Nome Instrutor" required>
+            </div>
+
+            <div class="form-group d-flex flex-column col-sm">
+                <label for="abreviacao">Abrev.</label>
+                <input type="text" formControlName="abreviacao" class="form-control" id="abreviacaoNome" placeholder="Abrev." required>
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="email">Email do Instrutor</label>
+            <input type="email" formControlName="email" class="form-control" id="emailInstrutor" aria-describedby="emailHelp" placeholder="E-mail" required>
+
+            <small
+            *ngIf="formInstrutor.get('email')?.valid"
+            class="text-success"
+          >Email do instrutor é valido!</small>
+
+          <small
+            *ngIf="formInstrutor.get('email')?.errors?.['emailEmUso']"
+            class="text-danger d-block mt-2"
+          >Email do instrutor já está sendo utilizando!</small>
+
+        </div>
+
+        <div id="espacamento" class="row d-flex justify-content-between">
+            <div class="form-group d-flex flex-column col-sm mt-2">
+                <div class="label-icon">
+                    <label for="pilares">Pilar</label>
+                </div>
+                <select formControlName="pilar" class="form-control" id="pilares">
+                    <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+                    <option *ngFor="let pilar of pilares$ | async as pilares" value={{pilar}}>{{pilar}}</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm mt-2">
+                <div class="label-icon">
+                    <label for="pilares">Disponibilidade</label>
+                </div>
+                <select formControlName="disponibilidade" class="form-control" id="tipoDisponibilidade">
+                    <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+                    <option value="Disponivel">Disponível</option>
+                    <option value="Ferias">Férias</option>
+                    <option value="Atestado">Atestado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group mt-2" id="DiasOff" *ngIf="formInstrutor.get('disponibilidade')?.value == 'ferias' || formInstrutor.get('disponibilidade')?.value == 'atestado'">
+            <div class="form-group">
+                <label for="diasOff">Insira quantos dias o Instrutor ficará indisponível</label>
+                <input type="number" name="diasOff" id="diasOff" class="form-control" placeholder="Insira os dias">
+            </div>
+        </div>
+
+        <!-- || formInstrutor.pending -->
+        <div class="modal-footer">
+            <button  type="submit" class="btn btn-primary" id="salvar" [disabled]="formInstrutor.invalid">Salvar</button>
+            <button type="button" class="btnForm" id="voltar" data-bs-dismiss="modal">Voltar</button>
+        </div>
+    </form>
+</app-form-modal>

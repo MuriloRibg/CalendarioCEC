@@ -1,0 +1,30 @@
+/*--- Google Fonts ---*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+#adicionarEvento{
+  width: 144px;
+  height: 40px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+  background: #183884;
+  text-decoration: none;
+
+  img{
+    margin-left: 8px;
+  }
+
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+#tituloPagina {
+  .bx-info-circle {
+    margin-left: 5px;
+  }
+}

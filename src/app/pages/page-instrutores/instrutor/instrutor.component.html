@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between align-items-center mb-2" id="professor">
+    <div id="instrutorCadastrado" class="d-flex justify-content-between w-100">
+        <div class="d-flex align-items-center w-100">
+            <p class="m-0 fw-bold nomeInstrutor">{{ instrutor.nome }} </p>
+        </div>
+
+        <div class="d-flex align-items-center w-100">
+            <p class="m-0 fw-bold apeInstrutor">{{ instrutor.abreviacao }}</p>
+        </div>
+
+        <div class="d-flex align-items-center w-100">
+            <p class="m-0 fw-bold apeInstrutor">{{ instrutor.email }}</p>
+        </div>
+
+        <div class="d-flex align-items-center w-100">
+            <p class="m-0 fw-bold apeInstrutor">{{ instrutor.pilar }} </p>
+        </div>
+
+        <div class="d-flex justify-content-end w-100" >
+            <button class="btnOpcoes" (click)="onUpdate(instrutor.id ?? 0)" appOnHover color="#00bfff">
+                <img src="assets/img/edit-2.png" width="15px" alt="Editar">
+            </button>
+            <button class="btnOpcoes" (click)="onDelete(instrutor.id ?? 0)" appOnHover>
+                <img src="assets/img/trash.png" width="15px" alt="Excluir">
+            </button>
+        </div>
+    </div>
+</div>

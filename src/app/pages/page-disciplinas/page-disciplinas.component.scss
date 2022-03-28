@@ -1,0 +1,46 @@
+/*--- Google Fonts ---*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.container-fluid {
+  height: calc(100vh - 103px);
+  display: flex;
+  flex-direction: column;
+}
+
+#adicionarDisciplina {
+  width: 144px;
+  height: 40px;
+
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+  background: #183884;
+}
+
+#adicionarDisciplina {
+  text-decoration: none;
+}
+
+#adicionarDisciplina img {
+  margin-left: 8px;
+}
+
+#adicionarDisciplina:hover {
+  opacity: 0.8;
+}
+
+#pagination-controls {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+#tituloPagina {
+  .bx-info-circle {
+    margin-left: 5px;
+  }
+}

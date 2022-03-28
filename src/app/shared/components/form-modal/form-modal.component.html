@@ -1,0 +1,11 @@
+<div class="modal-dialog m-0">
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-title">{{ titulo }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onClose()"></button>
+        </div>
+        <div class="modal-body p-0">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

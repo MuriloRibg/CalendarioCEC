@@ -1,0 +1,14 @@
+<div id="external-events" class="d-flex flex-column m-1" #event>
+  <h4 class="mt-2">{{pilar}}</h4>
+  <div *ngFor="let turma of turmas">
+    <div *ngIf="turma.pilar?.nomePilar == pilar " id="{{turma.pilar?.nomePilar}}" >
+      <div
+        class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'
+        [style.background-color]="turma.pilar?.cor"
+        [style.border-color]="turma.pilar?.cor"
+      >
+        <div [style.background-color]="turma.pilar?.cor" id="{{turma.id}}" class='fc-event-main'>{{turma.nome}}</div>
+      </div>
+    </div>
+  </div>
+</div>

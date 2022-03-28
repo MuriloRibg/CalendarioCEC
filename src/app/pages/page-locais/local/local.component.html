@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between align-items-center mb-2" id="local">
+  <div id="localCadastrado" class="d-flex justify-content-between w-100">
+    <div class="d-flex align-items-center w-100">
+      <p class="m-0 fw-bold nomeLocal">{{ local.nome }} </p>
+    </div>
+
+    <div class="d-flex align-items-center w-100">
+      <p class="m-0 fw-bold capacidade">{{ local.capacidade }}</p>
+    </div>
+
+    <div class="d-flex align-items-center w-100">
+      <p class="m-0 fw-bold sistemas">{{ sistema }}</p>
+    </div>
+
+    <div class="d-flex justify-content-end w-100" >
+      <button class="btnOpcoes" (click)="onUpdate(local)" appOnHover color="#54B2F7">
+        <img src="assets/img/edit-2.png" width="15px" alt="Editar">
+      </button>
+
+      <button class="btnOpcoes" (click)="onDelete(local)" appOnHover color="#FC5038">
+        <img src="assets/img/trash.png" width="15px" alt="Excluir">
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="d-flex">
+
+    <!-- Asidebar -->
+    <div class="asideBar d-flex align-items-center">
+        <a [routerLink]="['']">
+            <img src="assets/img/logo.png" alt="autoglass" width="120px">
+        </a>
+
+        <div class="nav">
+            <div>
+                <span>Calendário corporativo</span>
+                <ul class="ul">
+                    <li>
+                        <a [routerLink]="['']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" [routerLinkActiveOptions]="{ exact: true }">
+                            <i class='bx bx-home-alt m-1'></i>
+                            Início
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['calendario']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-calendar-alt m-1'></i>
+                            Calendário
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['telaVisualizacao']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-detail m-1'></i>
+                            Visualização
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['instrutores']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-user m-1'></i>
+                            Instrutores
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['locais']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-map m-1'></i>
+                            Locais
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['disciplinas']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-book-alt m-1'></i>
+                            Disciplinas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['turmas']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1">
+                            <i class='bx bx-group m-1'></i>
+                            Turmas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <i class='bx bx-menu bx-sm' (click)="toggle()"></i>
+        </div>
+    </div>
+</div>
+
+<div class="menu" [class.menuClass]="menuVariable">
+    <i class='bx bx-x bx-md' (click)="toggle()"></i>
+
+    <div class="nav">
+        <span></span>
+        <ul class="ul">
+            <li>
+                <a [routerLink]="['']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" [routerLinkActiveOptions]="{ exact: true }" (click)="toggle()">
+                    <i class='bx bx-home-alt m-1'></i>
+                    Início
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['calendario']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-calendar-alt m-1'></i>
+                    Calendário
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['telaVisualizacao']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-detail m-1'></i>
+                    Visualização
+                </a>
+            </li>
+
+            <li>
+                <a [routerLink]="['instrutores']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-user m-1'></i>
+                    Instrutores
+                </a>
+            </li>
+
+            <li>
+                <a [routerLink]="['locais']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-map m-1'></i>
+                    Locais
+                </a>
+            </li>
+
+            <li>
+                <a [routerLink]="['disciplinas']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-book-alt m-1'></i>
+                    Disciplinas
+                </a>
+            </li>
+
+            <li>
+                <a [routerLink]="['turmas']" routerLinkActive="active" class="asideBar-link d-flex align-items-center p-1" (click)="toggle()">
+                    <i class='bx bx-group m-1'></i>
+                    Turmas
+                </a>
+            </li>
+        </ul>
+
+        <a [routerLink]="['']">
+            <img src="assets/img/logo.png" alt="autoglass" width="120px" (click)="toggle()">
+        </a>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div>
+    <div class="acc-header" (click)="toggle()">
+        <div class="headerTitle">
+            {{ reserva.dataInicio | date:'dd-MM-yyyy'}} - {{reserva.titulo}} - [{{reserva.local.nome }}]
+        </div>
+        <div [@rotatedState]="!showBody? 'default': 'rotated'" class="arrow">
+            <i class='bx bx-chevron-down'></i>
+        </div>
+    </div>
+
+    <div *ngIf="reserva.aula; else evento">
+        <div [@smoothCollapse]="!showBody? 'initial': 'final'" >
+            <div class="acc-body">
+
+                <h4 class="fw-bold">Informações:</h4>
+                <p><b>Aula:</b> {{reserva.titulo}}</p>
+                <p><b>Instrutor:</b> {{reserva.aula?.instrutor?.nome}}</p>
+                <p><b>Turma:</b> {{ reserva.aula?.turma?.nome }}</p>
+                <p><b>Local:</b> {{reserva.local.nome}}</p>
+                <p><b>Data:</b> {{reserva.dataInicio | date:'dd-MM-yyyy'}}</p>
+                <p *ngIf="reserva.aula?.descricao" ><b>Horário:</b> Início: {{ reserva?.horaInicio | date:'HH:mm' }} | Fim: {{ reserva?.horaFim | date:'HH:mm' }} </p>
+
+                <div class="d-flex justify-content-between">
+                  <p *ngIf="reserva.aula?.descricao" ><b>Descrição:</b> {{ reserva.aula?.descricao }}</p>
+                  <p  *ngIf="!reserva.aula?.descricao" ><b>Horário:</b> Início: {{ reserva?.horaInicio | date:'HH:mm' }} | Fim: {{ reserva?.horaFim | date:'HH:mm' }} </p>
+                    <div>
+                        <button class="btnOpcoes" (click)="onUpdate(reserva)" appOnHover color="#54B2F7">
+                            <img src="assets/img/edit-2.png" width="15px" alt="Editar">
+                        </button>
+
+                        <button class="btnOpcoes" (click)="onDelete(reserva)" appOnHover color="#FC5038">
+                            <img src="assets/img/trash.png" width="15px" alt="Excluir">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #evento>
+    <div [@smoothCollapse]="!showBody? 'initial': 'final'" >
+        <div class="acc-body">
+            <h4 class="fw-bold">Informações:</h4>
+            <p><b>Evento:</b> {{reserva.titulo}}</p>
+            <p><b>Responsável:</b> {{reserva.evento?.instrutor?.nome}}</p>
+            <p><b>Local:</b> {{reserva.local.nome}}</p>
+            <p><b>Data:</b> Início: {{reserva.dataInicio | date:'dd-MM-yyyy'}}</p>
+            <p><b>Horário:</b> Início: {{ reserva?.horaInicio | date:'HH:mm' }} | Fim: {{ reserva?.horaFim | date:'HH:mm' }}</p>
+
+            <div class="d-flex justify-content-between">
+              <p *ngIf="reserva.aula?.descricao" ><b>Descrição:</b> {{ reserva.aula?.descricao }}</p>
+              <p *ngIf="!reserva.aula?.descricao" ><b>Horário:</b> Início: {{ reserva?.horaInicio | date:'HH:mm' }} | Fim: {{ reserva?.horaFim | date:'HH:mm' }} </p>
+                <div>
+                    <button class="btnOpcoes" (click)="onUpdate(reserva)" appOnHover color="#54B2F7">
+                        <img src="assets/img/edit-2.png" width="15px" alt="Editar">
+                    </button>
+
+                    <button class="btnOpcoes" (click)="onDelete(reserva)" appOnHover color="#FC5038">
+                        <img src="assets/img/trash.png" width="15px" alt="Excluir">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

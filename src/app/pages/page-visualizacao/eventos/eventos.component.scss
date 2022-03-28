@@ -1,0 +1,50 @@
+#dataAtual {
+    padding: 5px 0px;
+    border-radius: 5px;
+    background: #183884;
+    color: #FFF;
+}
+
+.cardSala {
+    // border: 1px solid red;
+    // margin-top: 10px;
+    margin: 5px 5px;
+    width: 100%;
+}
+
+/**====== CARD BOOTSTRAP ======**/
+.card {
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.titulo-sala {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+    padding: 3px 0px;
+    background: #183884;
+    color: #FFF;
+}
+.painelTurmas{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.containerSala{
+    max-width: 240px;
+    min-width: 240px;
+}
+
+.eventos{
+    overflow: auto;
+}
+
+.containerSala {
+  padding: 5px;
+}
+
+.evento{
+    margin-bottom: 10px;
+}

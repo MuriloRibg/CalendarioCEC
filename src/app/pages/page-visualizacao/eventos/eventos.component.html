@@ -1,0 +1,22 @@
+<div class="mt-4 text-center" id="dataAtual">
+    {{ day | date : 'EEEE, d De MMMM De y' : '-0300' : 'pt-BR' | lowercase | titlecase}}
+</div>
+
+<div id="titulo">
+    <div class="d-flex flex-column justify-content-between">
+        <div class="d-flex justify-content-between eventos">
+            <div  *ngFor="let local of locais" class="painelTurmas">
+                <div class="d-flex justify-content-between">
+                    <span class="titulo-sala">{{ local.nome }}</span>
+                </div>
+                <div class="containerSala">
+                    <div *ngFor="let reserva of reservas">
+                        <div *ngIf="local.id == reserva.local?.id" class="evento">
+                            <app-evento [reserva]="reserva" ></app-evento>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

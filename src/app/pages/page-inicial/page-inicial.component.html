@@ -1,0 +1,73 @@
+<lib-toastify-toast-container
+  [hideProgressBar]="hideProgressBar"
+  [iconLibrary]="'font-awesome'"
+>
+</lib-toastify-toast-container>
+
+<div class="container-fluid p-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center" id="tituloPagina">
+      <i class='bx bx-calendar-event bx-sm'></i>
+      <h5 class="m-0">Tela {{ titulo }}</h5>
+      <i class='bx bx-info-circle' tooltip="Tela inicial onde poderá ser realizado as reservas"></i>
+    </div>
+
+    <a
+      class="d-flex justify-content-center align-items-center"
+      id="adicionarEvento"
+      (click)="openModal(modalReserva)"
+    >
+      <i class='bx bx-plus-medical'></i>
+      Adicionar
+    </a>
+  </div>
+
+  <div class="d-flex align-items-center ">
+    <app-search titulo="Reserva" (search)="pesquisa($event)"></app-search>
+
+    <div class="componentSelectTurma">
+        <div class="label-icon">
+          <label for="id_turma">Turma</label>
+        </div>
+      <div class="selectTurma">
+        <select class="form-control" (change)="pesquisaPorTurma($event)">
+          <option [ngValue]="null" [disabled]="true" >Selecione...</option>
+          <option value=0>N/A</option>
+          <option *ngFor="let turma of turmas" value="{{turma.id}}">{{turma.nome}}</option>
+        </select>
+        <i class='bx bx-chevron-down'></i>
+      </div>
+    </div>
+
+    <app-input-data (data)="pesquisaPorData($event)"></app-input-data>
+  </div>
+
+  <app-reservas
+    [reservas]="reservas"
+  ></app-reservas>
+
+  <ng-template #modalReserva>
+    <app-cadastro-reserva
+      (reservas)="reservaAdicionada($event)"
+      [instrutores]="instrutores"
+      [disciplinas]="disciplinas"
+      [turmas]="turmas"
+      [locais]="locais"
+    ></app-cadastro-reserva>
+  </ng-template>
+
+  <div *ngIf="totalItems != itemsPerPage" class="row" id="pagination-controls">
+    <div class="col-xs-12 col-12 d-flex justify-content-center">
+      <pagination
+        [totalItems]="totalItems"
+        [itemsPerPage]="itemsPerPage"
+        [maxSize]="maxSize"
+        [rotate]="rotate"
+        previousText="&laquo;"
+        nextText="&raquo;"
+        (pageChanged)="pageChanged($event)"
+      >
+      </pagination>
+    </div>
+  </div>
+</div>

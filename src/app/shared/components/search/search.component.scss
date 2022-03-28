@@ -1,0 +1,41 @@
+/*--- Formatação do FORM ---*/
+
+form{
+  margin-right: 15px;
+}
+
+#tituloPagina img {
+    margin-right: 5px;
+}
+
+#searchInput {
+    width: 300px;
+}
+
+#btnPesquisar, #adicionarEvento{
+    width: 144px;
+    height: 40px;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    border-radius: 4px;
+    transition: 0.5s;
+    cursor: pointer;
+    color: white;
+    background: #183884;
+}
+
+#adicionarEvento {
+    text-decoration: none;
+
+}
+
+#adicionarEvento img  {
+    margin-left: 8px;
+}
+
+#adicionarEvento:hover {
+    opacity: 0.8;
+}
+

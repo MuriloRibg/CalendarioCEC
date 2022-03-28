@@ -1,0 +1,25 @@
+<div class="container-fluid p-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center" id="tituloPagina">
+      <i class='bx bx-calendar-event bx-sm'></i>
+      <h5 class="m-0">{{ titulo }}</h5>
+    </div>
+
+    <a class="d-flex justify-content-center align-items-center" id="adicionarReserva" (click)="openModal(modalReserva)">
+      <i class="bx bx-plus-medical"></i>
+      Adicionar
+    </a>
+  </div>
+
+  <ng-template #modalReserva>
+    <app-cadastro-reserva
+      (reservas)="reservaAdicionada($event)"
+      [instrutores]="instrutores"
+      [disciplinas]="disciplinas"
+      [turmas]="turmas"
+      [locais]="locais"
+     ></app-cadastro-reserva>
+  </ng-template>
+
+  <app-calendario (dropEvent)="openModalComTurma(modalReserva, $event)" ></app-calendario>
+</div>

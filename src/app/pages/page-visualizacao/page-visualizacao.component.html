@@ -1,0 +1,19 @@
+<div class="container-fluid p-4">
+  <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center" id="tituloPagina">
+      <i class='bx bx-calendar-event bx-sm'></i>
+      <h5 class="m-0">Tela de {{ titulo }}</h5>
+      <i class='bx bx-info-circle' tooltip="Tela de visualização com todas as reservas diárias"></i>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <app-input-data (data)="pesquisaPorData($event)"></app-input-data>
+  </div>
+
+  <app-eventos
+    [day]="data"
+    [reservas]="reservas"
+  >
+  </app-eventos>
+</div>

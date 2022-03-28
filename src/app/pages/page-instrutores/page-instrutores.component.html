@@ -1,0 +1,49 @@
+<lib-toastify-toast-container
+    [hideProgressBar]="hideProgressBar"
+    [iconLibrary]="'font-awesome'"
+></lib-toastify-toast-container>
+
+<div class="container-fluid p-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center" id="tituloPagina">
+      <i class='bx bx-user bx-sm m-1'></i>
+      <h5 class="m-0">Cadastro de {{ titulo }}</h5>
+      <i class='bx bx-info-circle' tooltip="Tela de gerenciamento de instrutores"></i>
+    </div>
+
+    <a class="d-flex justify-content-center align-items-center" id="adicionarEvento" (click)="openModal(modalInstrutores)">
+      <i class='bx bx-plus-medical'></i>
+      Adicionar
+    </a>
+  </div>
+
+  <app-search (search)="pesquisa($event)" [titulo]="titulo"></app-search>
+
+  <app-instrutores
+    [page]="page"
+    [instrutores]="instrutores"
+  >
+  </app-instrutores>
+
+  <ng-template #modalInstrutores>
+    <app-instrutor-form
+      (idInstrutor)="instrutorAdicionado($event)"
+    >
+    </app-instrutor-form>
+  </ng-template>
+
+  <div *ngIf="totalItems != itemsPerPage" class="row" id="pagination-controls">
+    <div class="col-xs-12 col-12 d-flex justify-content-center">
+      <pagination
+        [totalItems]="totalItems"
+        [itemsPerPage]="itemsPerPage"
+        [maxSize]="maxSize"
+        [rotate]="rotate"
+        previousText="&laquo;"
+        nextText="&raquo;"
+        (pageChanged)="pageChanged($event)"
+      >
+      </pagination>
+    </div>
+  </div>
+</div>

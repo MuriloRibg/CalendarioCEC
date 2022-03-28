@@ -1,0 +1,35 @@
+h5 {
+  color: #183884;
+}
+
+#titulo {
+  border-bottom: 1px solid #c0c0c0;
+  margin-bottom: 15px;
+
+  h5 {
+    font-weight: 600;
+    color: #000;
+  }
+}
+
+.btnForm {
+  padding: 8px 22px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background: #183884;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#btnExcluir {
+  border: 1px solid #183884;
+  background: #FFF;
+  color: #183884;
+
+  &:hover {
+    background: #183884;
+    color: #FFF;
+  }
+}

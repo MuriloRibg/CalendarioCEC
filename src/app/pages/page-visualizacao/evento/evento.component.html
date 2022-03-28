@@ -1,0 +1,22 @@
+
+<div *ngIf="reserva.aula; else Evento" id="eventoReservado">
+    <h5 class="card-title" style="background-color: {{ reserva.aula.turma?.pilar?.cor }}">{{ reserva?.titulo }}</h5>
+    <div class="card-body" >
+        <p class="card-text"><b>Treinamento:</b> {{ reserva.aula.disciplina?.nome }}</p>
+        <p class="card-text"><b>Instrutor:</b> {{ reserva.aula.instrutor?.nome }}</p>
+        <p class="card-text"><b>Local:</b> {{ reserva.aula.reserva?.local?.nome }}</p>
+        <p class="card-text"><b>Período:</b> {{ reserva?.horaInicio | date:'HH:mm' }} ás {{ reserva?.horaFim | date:'HH:mm' }}</p>
+    </div>
+</div>
+
+<ng-template #Evento>
+    <div id="eventoReservado">
+        <h5 class="card-title">{{ reserva?.titulo }}</h5>
+        <div class="card-body">
+            <p class="card-text"><b>Descrição:</b> {{ reserva.evento?.descricao }}</p>
+            <p class="card-text"><b>Responsável:</b> {{ reserva.evento?.instrutor?.nome }}</p>
+            <p class="card-text"><b>Local:</b> {{ reserva.local?.nome }}</p>
+            <p class="card-text"><b>Período:</b> {{ reserva?.horaInicio | date:'HH:mm' }} ás {{ reserva?.horaFim| date:'HH:mm' }}</p>
+        </div>
+    </div>
+</ng-template>

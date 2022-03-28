@@ -1,0 +1,51 @@
+<lib-toastify-toast-container
+    [hideProgressBar]="hideProgressBar"
+    [iconLibrary]="'font-awesome'"
+></lib-toastify-toast-container>
+
+<section class="m-1 mt-4" id="disciplinasCadastradas">
+  <h5 class="fs-5 fw-bold mb-4">Disciplinas Cadastradas</h5>
+  <div id="titulo">
+    <div class="d-flex justify-content-between 100%">
+      <div class="d-flex align-items-center w-100">
+        <h5 class="fs-6">NOME</h5>
+      </div>
+      <div class="d-flex align-items-center w-100">
+        <h5 class="fs-6">PILAR</h5>
+      </div>
+      <h5 class="d-flex align-items-center w-100"></h5>
+    </div>
+  </div>
+</section>
+
+<ng-template #modalUpdate>
+  <app-disciplina-form
+    (idDisciplina)="disciplinaAtualizado($event)"
+    [disciplina]="disciplina"
+    tituloModal="Atualiza Disciplina"
+  ></app-disciplina-form>
+</ng-template>
+
+<ng-template #modalDelete>
+  <app-form-modal titulo="Excluir">
+      <div class="d-flex align-items-center p-3">
+          <img src="assets/img/error-circle.png" class="m-1" alt="Icone de exclamação">
+          <p class="m-0">Tem certeza de que deseja arquivar esta Disciplina?</p>
+      </div>
+
+      <div class="modal-footer bg-light">
+          <button id="btnCancelar" class="btnOpcoes btnForm" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btnExcluir" type="submit" class="btnOpcoes btnForm" data-bs-dismiss="modal" (click)="excluir()">Excluir</button>
+      </div>
+  </app-form-modal>
+</ng-template>
+
+<section class="m-1 mt-4 fw-bold" id="disciplinasCadastradas">
+  <div *ngFor="let disciplina of disciplinas">
+    <app-disciplina
+    [disciplina]="disciplina"
+    (idDelete)="openModalDelete($event)"
+    (idUpdate)="openModalUpdate($event)"
+    ></app-disciplina>
+  </div>
+</section>
